@@ -1,4 +1,7 @@
 <template>
+    <HEAD>
+        <title>Упражнения</title>
+    </HEAD>
     <div class="row">
         <article class="col-3">
 

@@ -2,6 +2,7 @@ export default defineEventHandler(() => {
     return [
         {
             id: 1,
+            type: 'training',
             title: 'fefewf',
             desc: 'ddwdw'
         },
