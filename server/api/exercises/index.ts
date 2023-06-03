@@ -2,39 +2,43 @@ export default defineEventHandler(() => {
     return [
         {
             id: 1,
-            type: 'training',
-            title: 'Как накачать трицепс',
-            desc: 'Чтобы накачать трицепс, нужно постоянно наращивать объём выполняемых упражнений'
+            type: 'exercise',
+            title: 'Выпады',
+            equipment: 'personal weight',
+            muscle: 'quadriceps legs',
+            rating: 8.9
         },
         {
             id: 2,
-            type: 'training',
-            title: 'Как накачать трицепс',
-            desc: 'Чтобы накачать трицепс, нужно постоянно наращивать объём выполняемых упражнений'
+            type: 'exercise',
+            title: 'Выпады',
+            equipment: 'personal weight',
+            muscle: 'quadriceps legs',
+            rating: 8.9
         },
         {
             id: 3,
-            type: 'training',
-            title: 'Как накачать трицепс',
-            desc: 'Чтобы накачать трицепс, нужно постоянно наращивать объём выполняемых упражнений'
+            type: 'exercise',
+            title: 'Выпады',
+            equipment: 'personal weight',
+            muscle: 'quadriceps legs',
+            rating: 8.9
         },
         {
             id: 4,
-            type: 'training',
-            title: 'Как накачать трицепс',
-            desc: 'Чтобы накачать трицепс, нужно постоянно наращивать объём выполняемых упражнений'
+            type: 'exercise',
+            title: 'Выпады',
+            equipment: 'personal weight',
+            muscle: 'quadriceps legs',
+            rating: 8.9
         },
         {
             id: 5,
-            type: 'training',
-            title: 'Как накачать трицепс',
-            desc: 'Чтобы накачать трицепс, нужно постоянно наращивать объём выполняемых упражнений'
-        },
-        {
-            id: 6,
-            type: 'training',
-            title: 'Как накачать трицепс',
-            desc: 'Чтобы накачать трицепс, нужно постоянно наращивать объём выполняемых упражнений'
+            type: 'exercise',
+            title: 'Выпады',
+            equipment: 'personal weight',
+            muscle: 'quadriceps legs',
+            rating: 8.9
         }
     ]
 })

@@ -2,19 +2,20 @@
     <HEAD>
         <title>Упражнения</title>
     </HEAD>
+
+    <div class="row text-center my-4">
+      <h2>Упражнения</h2>
+    </div>
     <div class="row">
         <article class="col-3">
 
         </article>
         <main class="col-9">
-            <div class="row">
-                <TheCard 
-                    class="col-3"
-                    v-for="item in cardData"
-                    :key="item.id"
-                    :item="item"
-                />
-            </div>
+            <TheElementList 
+                v-for="item in cardData"
+                :key="item.id"
+                :="item"
+            />
         </main>
     </div>
 </template>
