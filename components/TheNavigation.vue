@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-white py-3">
     <div class="container-fluid">
-        <NavLink class="navbar-brand" to="/">
+        <NuxtLink class="navbar-brand" to="/">
             <img src="@/public/favicon.ico" alt="" width="30" height="24" class="d-inline-block align-text-top">
-        </NavLink>
+        </NuxtLink>
       <button
         class="navbar-toggler"
         type="button"
@@ -19,8 +19,8 @@
         <div class="w-100 justify-content-center navbar-nav">
           <NuxtLink active-class="active" class="nav-link" to="/trainings">Тренировки</NuxtLink>
           <NuxtLink active-class="active" class="nav-link" to="/exercises">Упражнения</NuxtLink>
-          <NuxtLink active-class="active" class="nav-link" to="/food">Питание</NuxtLink>
-          <NuxtLink active-class="active" class="nav-link" to="/motivation">Мотивация</NuxtLink>
+          <NuxtLink active-class="active" class="nav-link" to="/nutrition">Питание</NuxtLink>
+          <NuxtLink active-class="active" class="nav-link" to="/motivations">Мотивация</NuxtLink>
         </div>
       </div>
     </div>
@@ -28,5 +28,12 @@
 </template>
 
 <style scoped lang="scss">
-    
+.nav-link {
+  transition: all .3s;
+  margin: 0 5px;
+  font-size: 18px;
+  &:hover {
+    opacity: .8;
+  }
+}   
 </style>
