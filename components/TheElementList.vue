@@ -91,11 +91,16 @@ const getElementListUrl = (type: string, id: number): string => {
 
 <style lang="scss">
 .item {
+  transition: all .3s;
   color: #000;
   width: 100%;
   min-height: 200px;
   background-color: #fff;
   border-bottom: 1px solid #e6e6e6;
+  &:hover {
+    opacity: .8;
+    transform: scale(1.005);
+  }
   &__image {
     img {
       height: 100%;

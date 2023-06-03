@@ -6,6 +6,7 @@ export default defineEventHandler(() => {
             title: 'Выпады',
             equipment: 'personal weight',
             muscle: 'quadriceps legs',
+            complexity: 'easy',
             rating: 8.9
         },
         {
@@ -14,6 +15,7 @@ export default defineEventHandler(() => {
             title: 'Выпады',
             equipment: 'personal weight',
             muscle: 'quadriceps legs',
+            complexity: 'easy',
             rating: 8.9
         },
         {
@@ -22,6 +24,7 @@ export default defineEventHandler(() => {
             title: 'Выпады',
             equipment: 'personal weight',
             muscle: 'quadriceps legs',
+            complexity: 'easy',
             rating: 8.9
         },
         {
@@ -30,6 +33,7 @@ export default defineEventHandler(() => {
             title: 'Выпады',
             equipment: 'personal weight',
             muscle: 'quadriceps legs',
+            complexity: 'hard',
             rating: 8.9
         },
         {
@@ -38,6 +42,7 @@ export default defineEventHandler(() => {
             title: 'Выпады',
             equipment: 'personal weight',
             muscle: 'quadriceps legs',
+            complexity: 'hard',
             rating: 8.9
         }
     ]

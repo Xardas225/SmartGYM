@@ -1,25 +1,32 @@
 <template>
-    <HEAD>
-        <title>Упражнения</title>
-    </HEAD>
-
-    <div class="row text-center my-4">
-      <h2>Упражнения</h2>
-    </div>
-    <div class="row">
-        <article class="col-3">
-
-        </article>
-        <main class="col-9">
-            <TheElementList 
-                v-for="item in cardData"
-                :key="item.id"
-                :="item"
-            />
-        </main>
-    </div>
+  <HEAD>
+    <title>
+      Упражнения
+    </title>
+  </HEAD>
+  <div class="row text-center my-4">
+    <h2>Упражнения</h2>
+    <TheMainContent :cardData="cardData" />
+  </div>
 </template>
 
-<script setup lang="ts">
-const {data: cardData} = await useAsyncData('cardData', ()=>$fetch('/api/exercises'))
+<script lang="ts">
+import { useExStore } from '@/store/index'
+
+export default defineComponent({
+  async setup() {
+    const store:any = useExStore();
+  
+    const {data} = useAsyncData('exercises', ()=> {
+      return store.setCardData()
+    })
+
+    return { store }
+  },
+  computed: {
+    cardData() {
+      return this.store.getCardData
+    }
+  }
+})
 </script>

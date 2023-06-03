@@ -14,7 +14,8 @@ export default defineNuxtConfig({
     strict: true
   },
   modules: [
-    '@nuxt/image-edge'
+    '@nuxt/image-edge',
+    '@pinia/nuxt'
   ],
   css: ['~/assets/styles/main.scss']
 })

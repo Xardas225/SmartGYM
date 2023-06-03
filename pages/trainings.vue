@@ -25,8 +25,18 @@
   </div>
 </template>
 
-<script setup lang="ts">
-const { data: cardData } = await useAsyncData("cardData", () =>
-  $fetch("/api/trainings")
-);
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  async setup() {
+    const { data: cardData } = await useAsyncData("cardData", () =>
+      $fetch("/api/trainings")
+    );
+
+    return {cardData}
+  }
+})
+
+
 </script>
