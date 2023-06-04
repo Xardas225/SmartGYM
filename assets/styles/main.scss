@@ -3,5 +3,28 @@
 @import "./common.scss";
 
 body {
-    background-color: $mainBackgroundColor;
+  background-color: $mainBackgroundColor;
+}
+
+.navbar-sidebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+.sidebar-icon {
+  transition: all 0.3s;
+  font-size: 20px;
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  &__text {
+    font-size: 15px;
+    margin-left: 10px;
+  }
+  &:hover {
+    opacity: 0.5;
+  }
 }
