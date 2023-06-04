@@ -6,7 +6,7 @@ export default defineEventHandler(() => {
             title: 'Выпады',
             equipment: 'personal weight',
             muscle: 'quadriceps legs',
-            complexity: 'easy',
+            complexity: 'hard',
             rating: 8.9
         },
         {

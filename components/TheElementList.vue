@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { getElementUrl, getImageUrl } = useUtils();
+
 defineProps({
   id: {
     type: Number,
@@ -16,6 +18,9 @@ defineProps({
   muscle: {
     type: String as PropType<"quadriceps legs" | "other">,
     default: "other",
+  },
+  complexity: {
+    type: String,
   },
   rating: {
     type: Number,
@@ -39,32 +44,21 @@ const getMuscleText = (muscle: string): string => {
       return "Другое";
   }
 };
-
-const getUmagetUrl = (type: string, id: number): string => {
-  // FOR TEST
-  id > 1 ? (id = 1) : id;
-  // ########
-  const url = `../public/img/${type}/${id}.jpg`;
-  return new URL(url, import.meta.url).href;
-};
-
-const getElementListUrl = (type: string, id: number): string => {
-  return `/${type}/${id}`;
-};
 </script>
 
 <template>
   <div>
-    <NuxtLink :to="getElementListUrl(type,id)">
+    <NuxtLink :to="getElementUrl(type, id)">
       <div class="row d-flex justify-content-start item">
         <div class="col-4 item__image">
-          <img :src="getUmagetUrl(type, id)" />
+          <img :src="getImageUrl(type, id)" />
         </div>
         <div
           class="col-5 d-flex flex-column justify-content-center align-items-between item__desc"
         >
           <div class="item__desc__title">
             {{ title }}
+            {{ complexity }}
           </div>
           <div class="item__desc__muscle">
             <span class="item__desc__muscle-small"
@@ -91,14 +85,14 @@ const getElementListUrl = (type: string, id: number): string => {
 
 <style lang="scss">
 .item {
-  transition: all .3s;
+  transition: all 0.3s;
   color: #000;
   width: 100%;
   min-height: 200px;
   background-color: #fff;
   border-bottom: 1px solid #e6e6e6;
   &:hover {
-    opacity: .8;
+    opacity: 0.8;
     transform: scale(1.005);
   }
   &__image {

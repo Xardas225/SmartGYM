@@ -16,9 +16,9 @@
                 <div class="desc">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas labore, amet iste culpa tenetur, assumenda dolorem illo cum doloribus ad, ut laborum ipsum dolorum molestiae consectetur! Fugiat quis porro fuga.
                 </div>
-                <button class="btn btn-danger rounded-0">
+                <TheMainButton>
                     Узнать больше
-                </button>
+                </TheMainButton>
             </div>
         </div>
     </section>
@@ -68,9 +68,9 @@
                 <div class="desc">
                     В наши дни поддержание физической формы стало одним из главных занятий в свободное время.
                 </div>
-                <button class="btn btn-danger rounded-0">
+                <TheMainButton>
                     Читать далее
-                </button>
+                </TheMainButton>
             </div>
             <div class="col-6">
                 <img class="section__image-img" src="@/public/img/man_women.png">
@@ -144,9 +144,9 @@
                 <div class="desc">
                     В наши дни поддержание физической формы стало одним из главных занятий в свободное время.
                 </div>
-                <button class="btn btn-danger rounded-0">
+                <TheMainButton>
                     Читать далее
-                </button>
+                </TheMainButton>
             </div>
             <div class="col-6">
                 <img class="section__image-img" src="@/public/img/weightloss.jpg">
@@ -284,14 +284,6 @@ definePageMeta({
         text-align: center;
         font-size: 40px;
         line-height: 50px;
-    }
-}
-.btn {
-    transition: all .3s;
-    font-size: 24px;
-    padding: 7px 50px;
-    &:hover {
-        opacity: .8;
     }
 }
 .section__image-img-rounded {

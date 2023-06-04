@@ -6,7 +6,9 @@
   </HEAD>
   <div class="row text-center my-4">
     <h2>Упражнения</h2>
-    <TheMainContent :cardData="cardData" />
+    <TheMainContent 
+      :cardData="cardData"
+    />
   </div>
 </template>
 
@@ -17,7 +19,7 @@ export default defineComponent({
   async setup() {
     const store:any = useExStore();
   
-    const {data} = useAsyncData('exercises', ()=> {
+    useAsyncData('exercises', ()=> {
       return store.setCardData()
     })
 

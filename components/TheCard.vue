@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const { getElementUrl, getImageUrl } = useUtils();
+
 defineProps({
   id: {
     type: Number,
@@ -19,18 +21,6 @@ defineProps({
 
 /**
  * @param type - type of card 
- * @param id - card id
- */
-const getImageUrl = (type: string, id: number): string => {
-  // FOR TEST
-  id > 1 ? id = 1 : id
-  // ########
-  const url = `../public/img/${type}/${id}.jpg`;
-  return new URL(url, import.meta.url).href;
-};
-
-/**
- * @param type - type of card 
  */
 const getTypeText = (type: string): string => {
   switch (type) {
@@ -46,19 +36,11 @@ const getTypeText = (type: string): string => {
       return "Другое";
   }
 };
-
-/**
- * @param type - type of card 
- * @param id - card id
- */
-const getPostUrl = (type: string, id: number): string => {
-  return `/${type}/${id}`;
-};
 </script>
 
 <template>
   <div>
-    <NuxtLink :to="getPostUrl(type, id)" target="_blank">
+    <NuxtLink :to="getElementUrl(type, id)" target="_blank">
       <card
         class="card d-flex flex-column justify-content-start align-items-center"
       >
