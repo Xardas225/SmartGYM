@@ -1,39 +1,37 @@
 <template>
   <div>
     <div class="row">
-      <article class="col-3"></article>
+      <article class="col-3">
+        <TheFilter v-model="filter" />
+      </article>
       <main class="col-9">
-        <TheSort @order="order" />
-        <TheElementList v-for="item in data" :key="item.id" :="item" />
+        <TheElementList v-for="item in filteredData" :key="item.id" :="item" />
+
       </main>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-
+<script setup lang="ts">
 export interface CardDataType {
   id: number;
   title: string;
 }
 
-export default defineComponent({
-  props: {
-    cardData: {
-      type: Array as PropType<CardDataType[]>,
-      required: true
-    }
-  },
-  setup(props) {
-    const order = (value: any) => {
-      return value;
-    };
-
-    const data = computed(()=>{
-      if(![...props.cardData]) return [];
-      return [...props.cardData];
-    })
-    return { order, data };
+const props = defineProps({
+  cardData: {
+    type: Array as PropType<CardDataType[]>,
+    required: true,
   },
 });
+
+const filter = ref("easy");
+
+const filteredData = computed(()=> {
+  if(!filter) return props.cardData
+  return props.cardData.filter((el:any) => {
+    return el.complexity==filter.value
+  })
+});
+
 </script>

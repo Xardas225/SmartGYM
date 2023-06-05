@@ -1,8 +1,6 @@
 <template>
   <HEAD>
-    <title>
-      Упражнения
-    </title>
+    <title>Упражнения</title>
   </HEAD>
   <div class="row text-center my-4">
     <h2>Упражнения</h2>
@@ -12,23 +10,13 @@
   </div>
 </template>
 
-<script lang="ts">
-import { useExStore } from '@/store/index'
+<script setup lang="ts">
+import { useExStore } from "@/store/index";
 
-export default defineComponent({
-  async setup() {
-    const store:any = useExStore();
-  
-    useAsyncData('exercises', ()=> {
-      return store.setCardData()
-    })
+const store: any = useExStore();
 
-    return { store }
-  },
-  computed: {
-    cardData() {
-      return this.store.getCardData
-    }
-  }
-})
+useAsyncData("exercises", () => {
+  return store.setCardData();
+});
+
 </script>
