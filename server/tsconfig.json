@@ -3,7 +3,7 @@
   "compilerOptions": {    
     "types": [
       "@nuxt/types", 
-      "@nuxt/image-edge"
+      "@nuxt/image-edge",
     ]  
   }
 }
