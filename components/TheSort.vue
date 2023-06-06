@@ -2,7 +2,7 @@
   <div>
     <div class="d-flex align-items-center justify-content-start sort__wrapper">
       <div class="sort__title">Сортировка:</div>
-      <select name="sort" @change="(event)=>onSortedData(event)">
+      <select name="sort" @change="onSortedData">
         <option value=""></option>
         <option value="easy">Сначала лёгкие</option>
         <option value="hard">Сначала тяжелые</option>
@@ -11,19 +11,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+const emits = defineEmits(["update:modelValue"]);
 
-export default defineComponent({
-  emits: ['order'],
-  setup(props, {emit}) {
-    const onSortedData = (event:any) => {
-      emit('order', event.target.value)
-    }
-
-    return {onSortedData}
-  }
-});
+const onSortedData = (event: any) => {
+  emits("update:modelValue", event.target.value);
+};
 </script>
 
 <style scoped lang="scss">
