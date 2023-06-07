@@ -45,7 +45,7 @@ const onResetData = () => {
               v-model="filters.equipment"
               class="form-select"
             >
-            <option value="personal weight">Собственный вес</option>
+            <option value="personal_weight">Собственный вес</option>
             <option value="dumbbells">Гантели</option>
             </select>
           </div>
@@ -58,7 +58,7 @@ const onResetData = () => {
               v-model="filters.muscle"
               class="form-select"
             >
-            <option value="quadriceps legs">Квадрицепсы ног</option>
+            <option value="quadriceps_legs">Квадрицепсы ног</option>
             <option value="shoulders">Плечи</option>
             </select>
           </div>
