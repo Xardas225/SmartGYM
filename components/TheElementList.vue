@@ -12,11 +12,11 @@ defineProps({
     type: String,
   },
   equipment: {
-    type: String as PropType<"personal weight" | "other">,
+    type: String as PropType<"personal weight" | "dumbbells" | "other">,
     default: "other",
   },
   muscle: {
-    type: String as PropType<"quadriceps legs" | "other">,
+    type: String as PropType<"quadriceps legs" | "shoulders" | "other">,
     default: "other",
   },
   complexity: {
@@ -31,6 +31,8 @@ const getEquipmnetText = (equipment: string): string => {
   switch (equipment) {
     case "personal weight":
       return "Собственный вес";
+    case "dumbbells":
+      return "Гантели";
     default:
       return "Другое";
   }
@@ -40,6 +42,8 @@ const getMuscleText = (muscle: string): string => {
   switch (muscle) {
     case "quadriceps legs":
       return "Квадрицепсы ног";
+    case "shoulders":
+      return "Плечи";
     default:
       return "Другое";
   }

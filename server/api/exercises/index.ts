@@ -12,10 +12,10 @@ export default defineEventHandler(() => {
         {
             id: 2,
             type: 'exercise',
-            title: 'Выпады',
-            equipment: 'personal weight',
-            muscle: 'quadriceps legs',
-            complexity: 'easy',
+            title: 'Жим Арнольда',
+            equipment: 'dumbbells',
+            muscle: 'shoulders',
+            complexity: 'normal',
             rating: 8.9
         },
         {

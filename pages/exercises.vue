@@ -5,7 +5,7 @@
   <div class="row text-center my-4">
     <h2>Упражнения</h2>
     <TheMainContent 
-      :cardData="cardData"
+      :cardData="store.cardData"
     />
   </div>
 </template>
