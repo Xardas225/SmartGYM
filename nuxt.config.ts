@@ -16,7 +16,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image-edge',
     '@pinia/nuxt',
-    '@nuxtjs/supabase'
+    '@nuxtjs/supabase',
+    'nuxt-icon'
   ],
   css: ['~/assets/styles/main.scss']
 })

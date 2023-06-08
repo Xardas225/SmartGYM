@@ -1,3 +1,11 @@
+<script setup lang="ts">
+const props = defineProps({
+  user: {
+    type: Object
+  }
+})
+</script>
+
 <template>
   <nav class="navbar navbar-expand-lg bg-white py-3">
     <div class="container-fluid">

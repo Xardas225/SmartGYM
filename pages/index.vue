@@ -1,7 +1,4 @@
 <template>
-  <HEAD>
-      <title>SmartGYM</title>
-  </HEAD>
   <section class="section">
       <div class="row">
           <div class="col-6">
@@ -229,9 +226,13 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
+useHead({
+    title: 'SmartGYM'
+})
+
 definePageMeta({
-  layout: 'main'
+  layout: 'default'
 })
 </script>
 
