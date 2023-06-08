@@ -24,6 +24,31 @@ const submitForm = () => {
     console.log("Error validation");
   }
 };
+
+const client = useSupabaseClient()
+
+const signUp = async () => {
+  const { data } = await client.auth.signUp({
+    email: formData.email,
+    password: formData.password
+  })
+  console.log(data);
+}
+
+const signIn = async () => {
+  const { data } = await client.auth.signInWithPassword({
+    email: formData.email,
+    password: formData.password
+  })
+  console.log(data);
+} 
+
+// const user = useSupabaseUser()
+// onMounted(() => {
+//   if(user.value) {
+//     navigateTo('/singIn')
+//   }
+// })
 </script>
 
 <template>
@@ -105,7 +130,7 @@ const submitForm = () => {
           :name="`mdi:${v$.password.$error ? 'alert' : 'check'}`"
         ></Icon>
       </div>
-      <TheMainButton @click="submitForm"> Зарегистрироваться </TheMainButton>
+      <TheMainButton @click="signIn"> Зарегистрироваться </TheMainButton>
       <div class="register-add">
         Уже зарегистрированы?
         <NuxtLink to="/signin"> Войдите в систему </NuxtLink>
