@@ -4,8 +4,8 @@ export default defineEventHandler(() => {
             id: 1,
             type: 'exercise',
             title: 'Выпады',
-            equipment: 'personal weight',
-            muscle: 'quadriceps legs',
+            equipment: 'personal_weight',
+            muscle: 'quadriceps_legs',
             rating: 8.9
         }
     ]

@@ -1,49 +1,10 @@
 <script setup lang="ts">
+import { CardDataType } from '@/types';
 const { getElementUrl, getImageUrl } = useUtils();
+const { getPropertyText } = useProperties();
 
-defineProps({
-  id: {
-    type: Number,
-  },
-  type: {
-    type: String,
-  },
-  title: {
-    type: String,
-  },
-  equipment: {
-    type: String as PropType<"personal weight" | "other">,
-    default: "other",
-  },
-  muscle: {
-    type: String as PropType<"quadriceps legs" | "other">,
-    default: "other",
-  },
-  complexity: {
-    type: String,
-  },
-  rating: {
-    type: Number,
-  },
-});
+defineProps<CardDataType>();
 
-const getEquipmnetText = (equipment: string): string => {
-  switch (equipment) {
-    case "personal weight":
-      return "Собственный вес";
-    default:
-      return "Другое";
-  }
-};
-
-const getMuscleText = (muscle: string): string => {
-  switch (muscle) {
-    case "quadriceps legs":
-      return "Квадрицепсы ног";
-    default:
-      return "Другое";
-  }
-};
 </script>
 
 <template>
@@ -64,11 +25,11 @@ const getMuscleText = (muscle: string): string => {
             <span class="item__desc__muscle-small"
               >Составное упражнения на</span
             >
-            {{ getMuscleText(muscle) }}
+            {{ getPropertyText('muscle', muscle) }}
           </div>
           <div class="item__desc__equipment">
             <span class="item__desc__equipment-small">Оборудование</span>
-            {{ getEquipmnetText(equipment) }}
+            {{ getPropertyText('equipment', equipment) }}
           </div>
         </div>
         <div

@@ -2,10 +2,17 @@
   <div>
     <div class="row">
       <article class="col-3">
-        <TheFilter v-model="filter" />
+        <TheFilter @updateFilters="updateFilters" />
       </article>
       <main class="col-9">
-        <TheSort @order="order" />
+        <div class="row">
+          <div class="col-9">
+            <span v-for="filter in filters" :key="filters" class="badge bg-danger">{{ filter }}</span>
+          </div>
+          <div :class="`col-${filters ? 3 : 12}`">
+            <TheSearch v-model="search" />
+          </div>
+        </div>
         <TheElementList v-for="item in filteredData" :key="item.id" :="item" />
       </main>
     </div>
@@ -13,10 +20,8 @@
 </template>
 
 <script setup lang="ts">
-export interface CardDataType {
-  id: number;
-  title: string;
-}
+import { CardDataType } from '@/types';
+const { getPropertyText } = useProperties();
 
 const props = defineProps({
   cardData: {
@@ -25,13 +30,23 @@ const props = defineProps({
   },
 });
 
-const filter = ref("easy");
+const filters = ref();
+const search = ref("");
 
-const filteredData = computed(()=> {
-  if(!filter) return props.cardData
-  return props.cardData.filter((el:any) => {
-    return el.complexity==filter.value
-  })
+const updateFilters = (value: any): void => {
+  filters.value = value;
+};
+
+const filteredData = computed(() => {
+  if (!filters.value && !search.value) return props.cardData;
+
+  return props.cardData.filter((elem: any) => {
+    for (let filter in filters.value) {
+      if (!filters.value[filter]) continue;
+      if (elem[filter] !== filters.value[filter]) return false;
+    }
+    if (!elem.title.includes(search.value)) return false;
+    return true;
+  });
 });
-
 </script>
