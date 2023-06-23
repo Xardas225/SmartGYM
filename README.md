@@ -1,42 +1,9 @@
-# Nuxt 3 Minimal Starter
+# SmartGYM
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+An innovative project to maintain a healthy lifestyle and control your well-being - SmartGYM 
 
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+[![npm version](https://badge.fury.io/js/nuxt.svg)](https://badge.fury.io/js/nuxt)
+[![npm version](https://badge.fury.io/js/vue.svg)](https://badge.fury.io/js/vue)
+[![npm version](https://badge.fury.io/js/typescript.svg)](https://badge.fury.io/js/typescript)
+[![npm version](https://badge.fury.io/js/scss.svg)](https://badge.fury.io/js/scss)
+[![npm version](https://badge.fury.io/js/bootstrap.svg)](https://badge.fury.io/js/bootstrap)
