@@ -3,6 +3,10 @@ useHead({
   title: "Профиль",
 });
 
+definePageMeta({
+  middleware: 'auth'
+})
+
 const user = useSupabaseUser();
 
 const formData = reactive({

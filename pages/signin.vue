@@ -3,7 +3,7 @@ import { required, email, minLength } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
 
 useHead({
-  title: "Регистрация",
+  title: "Вход",
 });
 
 const formData = reactive({

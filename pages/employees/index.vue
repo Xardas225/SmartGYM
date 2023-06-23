@@ -3,6 +3,11 @@ import { useEmployeesStore } from "@/store";
 useHead({
   title: "Сотрудники",
 });
+
+definePageMeta({
+  middleware: "auth",
+});
+
 const store: any = useEmployeesStore();
 const employees = ref(null);
 
@@ -13,11 +18,9 @@ useAsyncData("employees", async (): Promise<void> => {
 });
 
 const deleteEmployee = async (id: Number): Promise<void> => {
-  if (confirm("Вы действительно хотите удалить этого сотрудника?"))
-  {
+  if (confirm("Вы действительно хотите удалить этого сотрудника?")) {
     await store.deleteEmployee(id);
-  }
-  else return;
+  } else return;
 };
 </script>
 

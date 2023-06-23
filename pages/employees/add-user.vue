@@ -9,6 +9,10 @@ useHead({
   title: "Новый сотрудник",
 });
 
+definePageMeta({
+  middleware: 'auth'
+})
+
 const formData = reactive({
   name: "",
   age: "",
