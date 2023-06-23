@@ -1,6 +1,9 @@
 <script setup>
 import { required, alphaNum, minLength } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
+import { useEmployeesStore } from "~/store";
+
+const store = useEmployeesStore();
 
 useHead({
   title: "Новый сотрудник",
@@ -22,11 +25,15 @@ const rules = computed(() => {
 
 const v$ = useVuelidate(rules, formData);
 
-const addEmployee = () => {
+const addEmployee = async () => {
   v$.value.$validate();
   if (v$.value.$error) {
     console.log("Error validation");
   }
+
+  await store.addEmployee(toRaw(formData));
+
+  navigateTo("/employees");
 };
 </script>
 

@@ -25,10 +25,35 @@ export const useEmployeesStore = defineStore("employees", {
   }),
   actions: {
     async setEmployees() {
-      const { data } = await useAsyncData("employees", () =>
-        $fetch("/api/employees")
-      );
-      this.employees = data.value;
+      const supabase = useSupabaseClient();
+      try {
+        const { data: employees, error } = await supabase
+          .from("Employees")
+          .select("*");
+        this.employees = employees;
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+    async addEmployee(employee) {
+      const supabase = useSupabaseClient();
+      try {
+        await supabase.from("Employees").insert([employee]);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async deleteEmployee(id) {
+      const supabase = useSupabaseClient();
+      try {
+        await supabase
+          .from("Employees")
+          .delete()
+          .eq("id", id);
+        this.setEmployees();
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
   getters: {
@@ -37,8 +62,8 @@ export const useEmployeesStore = defineStore("employees", {
     },
     getEmployeeById: (state) => {
       return (id) => {
-        return state.employees.find(e=>e.id==id)
-      }
+        return state.employees.find((e) => e.id == id);
+      };
     },
   },
 });

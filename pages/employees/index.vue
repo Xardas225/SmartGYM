@@ -3,15 +3,22 @@ import { useEmployeesStore } from "@/store";
 useHead({
   title: "Сотрудники",
 });
-
 const store: any = useEmployeesStore();
 const employees = ref(null);
 
-useAsyncData("employees", () => {
+useAsyncData("employees", async (): Promise<void> => {
   return store.setEmployees();
 }).then(() => {
   employees.value = store.getEmployees;
 });
+
+const deleteEmployee = async (id: Number): Promise<void> => {
+  if (confirm("Вы действительно хотите удалить этого сотрудника?"))
+  {
+    await store.deleteEmployee(id);
+  }
+  else return;
+};
 </script>
 
 <template>
@@ -35,7 +42,11 @@ useAsyncData("employees", () => {
                 К сотруднику
               </button>
             </NuxtLink>
-            <button type="button" class="btn btn-outline-danger">
+            <button
+              @click="deleteEmployee(empl.id)"
+              type="button"
+              class="btn btn-outline-danger"
+            >
               Удалить
             </button>
           </div>
