@@ -9,47 +9,40 @@ const formData = reactive({
   email: user?.value.email,
   phone: "",
 });
-
-console.log(user);
 </script>
 
 <template>
-  <div>
-    <div v-if="user" class="card">
-      <div class="card-body">
-        <div class="mb-3">
-          <label for="email" class="form-label">Логин</label>
-          <input
-            type="text"
-            class="form-control"
-            id="email"
-            placeholder="Введите email"
-            v-model="formData.email"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="phone" class="form-label">Телефон</label>
-          <input
-            type="text"
-            class="form-control"
-            id="phone"
-            placeholder="Введите телефон"
-            v-model="formData.phone"
-          />
-        </div>
-        <button type="button" class="btn btn-primary">Сохранить</button>
-        <div class="mt-3">
-          Дата регистрации:
-          {{
-            new Date(user.created_at).toLocaleString("ru-RU", {
-              weekday: "long",
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })
-          }}
-        </div>
-      </div>
+  <div v-if="user" class="bg-white p-4 mt-4 rounded">
+    <div class="fs-4 mb-4">Профиль</div>
+    <div class="mb-3">
+      <TheBaseInput
+        inputType="text"
+        placeholder="Введите email"
+        v-model:input="formData.email"
+        label="Email"
+      />
+    </div>
+    <div class="mb-3">
+      <TheBaseInput
+        inputType="text"
+        placeholder="Введите телефон"
+        v-model:input="formData.phone"
+        label="Телефон"
+      />
+    </div>
+    <div class="mb-3">
+      Дата регистрации:
+      {{
+        new Date(user.created_at).toLocaleString("ru-RU", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      }}
+    </div>
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-primary">Сохранить</button>
     </div>
   </div>
 </template>

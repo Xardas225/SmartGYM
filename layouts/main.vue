@@ -47,17 +47,8 @@ const signOut = async () => {
           </NuxtLink>
 
           <NuxtLink
-            v-if="user"
-            to="/employees"
-            class="list-group-item sidebar-icon__wrapper"
-          >
-            <Icon class="sidebar-icon" name="system-uicons:users" />
-            <div class="sidebar-icon__text">Сотрудники</div>
-          </NuxtLink>
-
-          <NuxtLink
             v-if="!user"
-            to="/signin"
+            to="/signup"
             class="list-group-item sidebar-icon__wrapper"
           >
             <Icon class="sidebar-icon" name="system-uicons:user-male" />

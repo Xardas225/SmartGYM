@@ -18,3 +18,22 @@ export const useExStore = defineStore('exercises', {
         }
     }
 })
+
+export const useEmployeesStore = defineStore('employees', {
+    state: () => ({
+        employees: null
+    }),
+    actions: {
+        async setEmployees() {
+            const { data } = await useAsyncData("employees", () =>
+                $fetch("/api/employees")
+            );
+            this.employees = data.value
+        }
+    },
+    getters: {
+        getEmployees(state) {
+            return state.employees
+        }
+    }
+})

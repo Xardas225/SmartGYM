@@ -1,10 +1,30 @@
 <script setup lang="ts">
-import { CardDataType } from '@/types';
 const { getElementUrl, getImageUrl } = useUtils();
 const { getPropertyText } = useProperties();
 
-defineProps<CardDataType>();
-
+defineProps<{
+  id: {
+    type: Number;
+  };
+  type: {
+    type: String;
+  };
+  title: {
+    type: String;
+  };
+  equipment: {
+    type: String;
+  };
+  muscle: {
+    type: String;
+  };
+  complexity: {
+    type: String;
+  };
+  rating: {
+    type: Number;
+  };
+}>();
 </script>
 
 <template>
@@ -25,11 +45,11 @@ defineProps<CardDataType>();
             <span class="item__desc__muscle-small"
               >Составное упражнения на</span
             >
-            {{ getPropertyText('muscle', muscle) }}
+            {{ getPropertyText("muscle", muscle) }}
           </div>
           <div class="item__desc__equipment">
             <span class="item__desc__equipment-small">Оборудование</span>
-            {{ getPropertyText('equipment', equipment) }}
+            {{ getPropertyText("equipment", equipment) }}
           </div>
         </div>
         <div

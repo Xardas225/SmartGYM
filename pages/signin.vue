@@ -92,8 +92,8 @@ const signIn = async () => {
       </div>
       <TheCardButton @click="signIn"> Войти </TheCardButton>
       <div class="register-add">
-        Уже зарегистрированы?
-        <NuxtLink to="/signin"> Войдите в систему </NuxtLink>
+        Нет аккаунта?
+        <NuxtLink to="/signup"> Зарегистрируйтесь </NuxtLink>
       </div>
     </div>
   </div>
