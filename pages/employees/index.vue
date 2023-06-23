@@ -44,7 +44,7 @@ useAsyncData("employees", () => {
       <div class="pt-4 d-flex justify-content-end">
         <NuxtLink :to="`/employees/add-user`">
           <button type="button" class="btn btn-outline-success">
-            Добавить нового пользователя
+            Добавить нового сотрудника
           </button>
         </NuxtLink>
       </div>

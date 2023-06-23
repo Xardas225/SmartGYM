@@ -49,74 +49,37 @@ const signUp = async () => {
     <div v-if="user" class="regiter-wrapper">
       <div class="card-title register-title">Регистрация</div>
       <div class="card-body register-body">
-        <div class="position-relative mb-3">
-          <label for="name" class="form-label">Имя</label>
-          <input
-            v-model="formData.name"
-            @change="v$.name.$touch"
-            type="name"
-            class="form-control"
-            :class="{
-              'border border-2 border-danger': v$.name.$error,
-              'border border-2 border-success ': !v$.name.$invalid,
-            }"
-            id="email"
+        <div class="mb-3">
+          <TheBaseInput
+            @changeInput="v$.name.$touch"
+            label="Имя"
             placeholder="Введите имя"
+            v-model:input="formData.name"
+            :error="v$.name.$error"
+            :success="!v$.name.$invalid"
           />
-          <Icon
-            class="position-absolute alert-icon"
-            :class="`${
-              v$.name.$error ? 'alert-icon-error' : 'alert-icon-success'
-            }`"
-            v-if="!v$.name.$invalid || v$.name.$error"
-            :name="`mdi:${v$.name.$error ? 'alert' : 'check'}`"
-          ></Icon>
         </div>
-        <div class="position-relative mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input
-            v-model="formData.email"
-            @change="v$.email.$touch"
-            type="email"
-            class="form-control"
-            :class="{
-              'border border-2 border-danger': v$.email.$error,
-              'border border-2 border-success ': !v$.email.$invalid,
-            }"
-            id="email"
+        <div class="mb-3">
+          <TheBaseInput
+            @changeInput="v$.email.$touch"
+            label="Email"
+            imputType="email"
             placeholder="Введите email"
+            v-model:input="formData.email"
+            :error="v$.email.$error"
+            :success="!v$.email.$invalid"
           />
-          <Icon
-            class="position-absolute alert-icon"
-            :class="`${
-              v$.email.$error ? 'alert-icon-error' : 'alert-icon-success'
-            }`"
-            v-if="!v$.email.$invalid || v$.email.$error"
-            :name="`mdi:${v$.email.$error ? 'alert' : 'check'}`"
-          ></Icon>
         </div>
-        <div class="position-relative mb-3">
-          <label for="password" class="form-label">Пароль</label>
-          <input
-            v-model="formData.password"
-            @change="v$.password.$touch"
-            type="password"
-            class="form-control"
-            :class="{
-              'border border-2 border-danger': v$.password.$error,
-              'border border-2 border-success ': !v$.password.$invalid,
-            }"
-            id="password"
+        <div class="mb-3">
+          <TheBaseInput
+            @changeInput="v$.email.$touch"
+            label="Пароль"
+            imputType="password"
             placeholder="Введите пароль"
+            v-model:input="formData.password"
+            :error="v$.password.$error"
+            :success="!v$.password.$invalid"
           />
-          <Icon
-            class="position-absolute alert-icon"
-            :class="`${
-              v$.password.$error ? 'alert-icon-error' : 'alert-icon-success'
-            }`"
-            v-if="!v$.password.$invalid || v$.password.$error"
-            :name="`mdi:${v$.password.$error ? 'alert' : 'check'}`"
-          ></Icon>
         </div>
         <TheMainButton @click="signUp"> Зарегистрироваться </TheMainButton>
         <div class="register-add">
@@ -164,16 +127,5 @@ const signUp = async () => {
     color: rgba(0, 0, 0, 0.5);
   }
 }
-.alert-icon {
-  font-weight: bold;
-  font-size: 20px;
-  bottom: 10px;
-  right: 10px;
-  &-success {
-    color: #198754;
-  }
-  &-error {
-    color: #ffc107;
-  }
-}
+
 </style>
