@@ -1,8 +1,5 @@
 <script setup lang="ts">
-interface BreadCrumbItem {
-  url: string;
-  title: string;
-}
+import { BreadCrumbItem } from "@/interfaces/breadCrumbs";
 
 const props = defineProps<{
   items: BreadCrumbItem[];

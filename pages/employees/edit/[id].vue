@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { required, alphaNum, minLength } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
-import { useEmployeesStore } from "~/store";
+import { useEmployeesStore } from "@/store";
 
 const route = useRoute();
 const userId = Number(route.params.id);
@@ -13,7 +13,7 @@ const formData = reactive({
   position: "",
 });
 
-useAsyncData("employee", async () => {
+useAsyncData("employee", async (): Promise<void> => {
   return await store.getEmployeeById(userId);
 }).then((res) => {
   const { name, age, position } = res.data.value;
@@ -100,5 +100,6 @@ const addEmployee = async (): Promise<void> => {
         </div>
       </form>
     </div>
+    <TheSpinner v-else />
   </div>
 </template>

@@ -1,16 +1,19 @@
 <script setup lang="ts">
-const props = defineProps({
-  label: { type: String, default: "" },
-  inputType: { type: String, default: "text" },
-  placeholder: String,
-  input: { type: String, default: "" },
-  error: Boolean,
-  success: Boolean,
-});
+const props = defineProps<{
+  label: { type: String , default: "" },
+  inputType: string | undefined,
+  placeholder: string,
+  input: string,
+  error: boolean,
+  success: boolean
+}>();
 
-const { label, inputType, placeholder, input, error, success } = toRefs(props);
+const { input } = toRefs(props);
 
-const emit = defineEmits(["update:input", "changeInput"]);
+const emit = defineEmits<{
+  (e: "update:input", value: string): void;
+  (e: "changeInput"): void;
+}>();
 
 const inputComputed = computed({
   get: () => input.value,

@@ -1,6 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useEmployeesStore } from "@/store";
+import { Employee } from "@/interfaces/employee";
 
 const route = useRoute();
 
@@ -8,10 +9,10 @@ useHead({
   title: "Сотрудник",
 });
 
-const store = useEmployeesStore();
-const employee = ref(null);
+const store: any = useEmployeesStore();
+const employee = ref<Employee>();
 
-useAsyncData("employee", () => {
+useAsyncData("employee", (): Promise<void> => {
   return store.setEmployees();
 })
   .then(() => {
@@ -77,10 +78,6 @@ const chartOptions = {
       </div>
     </div>
 
-    <div v-else class="d-flex justify-content-center">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
+    <TheSpinner v-else />
   </div>
 </template>
