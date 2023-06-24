@@ -3,20 +3,31 @@ import { required, alphaNum, minLength } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
 import { useEmployeesStore } from "~/store";
 
+const route = useRoute();
+const userId = Number(route.params.id);
 const store = useEmployeesStore();
-
-useHead({
-  title: "Новый сотрудник",
-});
-
-definePageMeta({
-  middleware: "auth",
-});
 
 const formData = reactive({
   name: "",
   age: "",
   position: "",
+});
+
+useAsyncData("employee", async () => {
+  return await store.getEmployeeById(userId);
+}).then((res) => {
+  const { name, age, position } = res.data.value;
+  formData.name = name;
+  formData.age = age;
+  formData.position = position;
+});
+
+useHead({
+  title: "Редактирование сотрудника",
+});
+
+definePageMeta({
+  middleware: "auth",
 });
 
 const rules = computed(() => {
@@ -35,8 +46,7 @@ const addEmployee = async (): Promise<void> => {
     console.log("Error validation");
     return;
   }
-
-  await store.addEmployee(toRaw(formData));
+  await store.updateEmployee(userId, toRaw(formData));
 
   navigateTo("/employees");
 };
@@ -46,13 +56,13 @@ const addEmployee = async (): Promise<void> => {
   <TheBreadCrumbs
     :items="[
       { title: 'Сотрудники', url: '/employees' },
-      { title: 'Новый сотрудник', url: '' },
+      { title: 'Редактирование сотрудника', url: '' },
     ]"
   />
   <div class="bg-white rounded mt-4 p-4">
     <div v-if="formData">
       <form @submit.prevent="addEmployee">
-        <div class="fs-4 mb-4">Добавление нового сотрудника</div>
+        <div class="fs-4 mb-4">Редактирование сотрудника</div>
         <div class="mb-4">
           <TheBaseInput
             @changeInput="v$.name.$touch"
@@ -85,7 +95,7 @@ const addEmployee = async (): Promise<void> => {
         </div>
         <div class="d-flex justify-content-end">
           <button type="submit" class="btn btn-outline-success">
-            Добавить сотрудника
+            Обновить информацию
           </button>
         </div>
       </form>

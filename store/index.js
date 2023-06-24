@@ -46,9 +46,21 @@ export const useEmployeesStore = defineStore("employees", {
     async deleteEmployee(id) {
       const supabase = useSupabaseClient();
       try {
+        await supabase.from("Employees").delete().eq("id", id);
+        this.setEmployees();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async updateEmployee(id, employee) {
+      if (this.employees === null) await this.setEmployees();
+      const supabase = useSupabaseClient();
+      try {
         await supabase
           .from("Employees")
-          .delete()
+          .update({
+            ...employee,
+          })
           .eq("id", id);
         this.setEmployees();
       } catch (error) {
