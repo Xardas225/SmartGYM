@@ -8,16 +8,37 @@ const props = defineProps<{
 const emit = defineEmits<{
   (e: "deleteEmployee", value: Number): void;
 }>();
+
+const headers = [
+  {
+    title: "Имя",
+    sortItems: true,
+  },
+  {
+    title: "Позиция",
+    sortItems: true,
+  },
+  {
+    title: "Возраст",
+    sortItems: true,
+  },
+  {
+    title: "Действия",
+    sortItems: false,
+  },
+];
 </script>
 
 <template>
   <div>
     <div class="fs-4 mb-4">Сотрудники</div>
     <div class="row mb-4 border-bottom py-2">
-      <div class="col fw-bold">Имя</div>
-      <div class="col fw-bold">Позиция</div>
-      <div class="col fw-bold">Возраст</div>
-      <div class="col fw-bold"></div>
+      <TheTableHeadElement
+        v-for="(head, index) in headers"
+        :key="index"
+        :title="head.title"
+        :sortItems="head.sortItems"
+      />
     </div>
     <template v-for="empl in employees" :key="empl.id">
       <div class="row border-bottom py-2 mb-4">
@@ -48,3 +69,18 @@ const emit = defineEmits<{
     </div>
   </div>
 </template>
+
+<style lang="scss">
+.arrow-up-icon {
+  position: absolute;
+  right: 30px;
+  top: 3px;
+  font-size: 20px;
+}
+.arrow-down-icon {
+  position: absolute;
+  right: 20px;
+  top: 3px;
+  font-size: 20px;
+}
+</style>

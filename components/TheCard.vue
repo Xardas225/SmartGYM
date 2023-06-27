@@ -20,7 +20,7 @@ defineProps({
 });
 
 /**
- * @param type - type of card 
+ * @param type - type of card
  */
 const getTypeText = (type: string): string => {
   switch (type) {

@@ -9,15 +9,7 @@ const props = defineProps({
 <template>
   <nav class="navbar navbar-expand-lg bg-white py-3">
     <div class="container-fluid">
-      <NuxtLink class="navbar-brand" to="/">
-        <img
-          src="@/public/favicon.ico"
-          alt=""
-          width="30"
-          height="24"
-          class="d-inline-block align-text-top"
-        />
-      </NuxtLink>
+      
       <button
         class="navbar-toggler"
         type="button"
@@ -44,18 +36,6 @@ const props = defineProps({
             >Мотивация</NuxtLink
           >
         </div>
-      </div>
-
-      <div class="navbar-sidebar">
-        <Icon
-          class="sidebar-icon"
-          name="zondicons:align-right"
-          data-bs-toggle="offcanvas"
-          href="#offcanvasExample"
-          role="button"
-          aria-controls="offcanvasExample"
-        >
-        </Icon>
       </div>
     </div>
   </nav>
