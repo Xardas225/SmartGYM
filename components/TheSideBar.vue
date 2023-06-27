@@ -24,14 +24,24 @@ const props = defineProps<{
     </NuxtLink>
     <hr />
     <ul class="nav nav-pills flex-column mb-auto">
-      <NuxtLink
-        v-if="user"
-        to="/employees"
-        class="list-group-item sidebar-icon__wrapper"
-      >
-        <Icon class="sidebar-icon" name="system-uicons:users" />
-        <div class="nav-link text-white">Сотрудники</div>
-      </NuxtLink>
+      <div v-if="user">
+        <NuxtLink to="/employees" class="list-group-item sidebar-icon__wrapper">
+          <Icon class="sidebar-icon" name="system-uicons:users" />
+          <div class="nav-link text-white">Сотрудники</div>
+        </NuxtLink>
+        <NuxtLink to="/analytics" class="list-group-item sidebar-icon__wrapper">
+          <Icon class="sidebar-icon" name="ph:chart-donut-fill" />
+          <div class="nav-link text-white">Аналитика</div>
+        </NuxtLink>
+        <NuxtLink to="/raing" class="list-group-item sidebar-icon__wrapper">
+          <Icon class="sidebar-icon" name="material-symbols:social-leaderboard" />
+          <div class="nav-link text-white">Доска лидеров</div>
+        </NuxtLink>
+        <NuxtLink to="/Активность" class="list-group-item sidebar-icon__wrapper">
+          <Icon class="sidebar-icon" name="carbon:user-activity" />
+          <div class="nav-link text-white">Активность</div>
+        </NuxtLink>
+      </div>
 
       <NuxtLink
         v-if="!user"
