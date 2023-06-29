@@ -36,6 +36,15 @@ const saveStatus = () => {
   if (!formData.status) return;
   toggleStatusEdit();
 };
+
+// const showModal = ref(false);
+
+// const image = ref(null);
+
+// const setCroppedImageData = (data) => {
+//   // imageData = data;
+//   image.value = data.imageUrl;
+// };
 </script>
 
 <template>
@@ -44,6 +53,19 @@ const saveStatus = () => {
       <div class="row">
         <div class="col-2">
           <img class="rounded" src="https://via.placeholder.com/200" />
+          <!-- <div class="d-flex justify-content-center my-2">
+            <CropperButton
+              class="btn btn-outline-primary w-100"
+              btnText="Обновить фото"
+              @showModal="showModal = true"
+            />
+            <CropperModal
+              :minAspectRatioProp="{ width: 8, height: 8 }"
+              :maxAspectRatioProp="{ width: 8, height: 8 }"
+              @croppedImageData="setCroppedImageData"
+              @showModal="showModal = false"
+            />
+          </div> -->
         </div>
         <div
           class="col-10 d-flex flex-column justify-content-between align-items-start"
