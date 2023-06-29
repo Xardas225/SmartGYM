@@ -7,22 +7,34 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (e: "deleteEmployee", value: Number): void;
+  (e: "updateSorting", type: String, value: Boolean): void;
 }>();
+
+const sorting = ref<any>([]);
+
+const updateSorting = (type: string, value: boolean): void => {
+  sorting.value.map((el: any) => el.resetSorting());
+  emit("updateSorting", type, value);
+};
 
 const headers = [
   {
+    name: 'name',
     title: "Имя",
     sortItems: true,
   },
   {
+    name: 'position',
     title: "Позиция",
     sortItems: true,
   },
   {
+    name: 'age',
     title: "Возраст",
     sortItems: true,
   },
   {
+    name: '',
     title: "Действия",
     sortItems: false,
   },
@@ -38,6 +50,9 @@ const headers = [
         :key="index"
         :title="head.title"
         :sortItems="head.sortItems"
+        :name="head.name"
+        @updateSorting="updateSorting"
+        ref="sorting"
       />
     </div>
     <template v-for="empl in employees" :key="empl.id">
@@ -53,7 +68,7 @@ const headers = [
           />
           <TheLinkButton
             @click="emit('deleteEmployee', empl.id)"
-            :url="`/employees/currency/${empl.id}`"
+            :url="``"
             btnText="Удалить"
             class="btn btn-outline-danger"
           />
@@ -69,18 +84,3 @@ const headers = [
     </div>
   </div>
 </template>
-
-<style lang="scss">
-.arrow-up-icon {
-  position: absolute;
-  right: 30px;
-  top: 3px;
-  font-size: 20px;
-}
-.arrow-down-icon {
-  position: absolute;
-  right: 20px;
-  top: 3px;
-  font-size: 20px;
-}
-</style>

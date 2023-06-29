@@ -19,6 +19,14 @@ useAsyncData("employees", async (): Promise<void> => {
   employees.value = store.getEmployees;
 });
 
+const sorted = (type: string, value: boolean): void => {
+  if (employees.value) {
+    employees.value.sort((a, b) =>
+      value ? a[type] > b[type] : a[type] < b[type]
+    );
+  }
+};
+
 const deleteEmployee = async (id: Number): Promise<void> => {
   if (confirm("Вы действительно хотите удалить этого сотрудника?")) {
     await store.deleteEmployee(id);
@@ -32,6 +40,7 @@ const deleteEmployee = async (id: Number): Promise<void> => {
       <TheEmployeesTable
         :employees="employees"
         @deleteEmployee="deleteEmployee"
+        @updateSorting="sorted"
       />
     </div>
     <TheSpinner v-else />

@@ -66,7 +66,7 @@ export const useEmployeesStore = defineStore("employees", {
       } catch (error) {
         console.log(error);
       }
-    },
+    }
   },
   getters: {
     getEmployees(state) {
