@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-const { getElementUrl, getImageUrl } = useUtils();
+import { PropType } from 'vue';
+import { useUtils } from '@/composables/useUtils'; // Предполагаемый путь к useUtils
 
+// Определение пропсов с типами
 defineProps({
   id: {
     type: Number,
@@ -11,52 +13,60 @@ defineProps({
     required: true,
   },
   type: {
-    type: String as PropType<"training" | "exercise" | "food" | "motivation">,
+    type: String as PropType<'training' | 'exercise' | 'food' | 'motivation'>,
     required: true,
   },
   desc: {
     type: String,
+    default: '', // Установка значения по умолчанию
   },
 });
 
+// Использование утилит
+const { getElementUrl, getImageUrl } = useUtils();
+
 /**
- * @param type - type of card
+ * Возвращает текстовое представление типа карточки.
+ * @param type - тип карточки
  */
 const getTypeText = (type: string): string => {
   switch (type) {
-    case "training":
-      return "Тренировки";
-    case "exercise":
-      return "Упражнения";
-    case "food":
-      return "Питание";
-    case "motivation":
-      return "Мотивация";
+    case 'training':
+      return 'Тренировки';
+    case 'exercise':
+      return 'Упражнения';
+    case 'food':
+      return 'Питание';
+    case 'motivation':
+      return 'Мотивация';
     default:
-      return "Другое";
+      return 'Другое';
   }
 };
 </script>
 
 <template>
   <div>
+    <!-- Использование NuxtLink для навигации -->
     <NuxtLink :to="getElementUrl(type, id)" target="_blank">
-      <card
-        class="card d-flex flex-column justify-content-start align-items-center"
-      >
+      <div class="card">
+        <!-- Изображение карточки -->
         <div class="card__image">
-          <img :src="getImageUrl(type, id)" />
+          <img :src="getImageUrl(type, id)" alt="Card Image" />
         </div>
+        <!-- Тип карточки -->
         <div class="card__type">
           {{ getTypeText(type) }}
         </div>
+        <!-- Заголовок карточки -->
         <div class="card__title">
           {{ title }}
         </div>
+        <!-- Описание карточки -->
         <div class="card__desc">
           {{ desc }}
         </div>
-      </card>
+      </div>
     </NuxtLink>
   </div>
 </template>
@@ -68,27 +78,32 @@ const getTypeText = (type: string): string => {
   min-height: 420px;
   background-color: #fff;
   margin-bottom: 25px;
+
   &:hover {
     transform: scale(1.02);
     opacity: 0.8;
     cursor: pointer;
   }
+
   &__image {
     min-height: 200px;
     max-height: 230px;
     max-width: 100%;
     overflow: hidden;
   }
+
   img {
     max-height: 100%;
     width: 100%;
   }
+
   &__type {
     color: #dee4e9;
     font-size: 15px;
     margin-top: 10px;
     text-align: center;
   }
+
   &__title {
     padding: 0 20px;
     font-size: 20px;
@@ -96,6 +111,7 @@ const getTypeText = (type: string): string => {
     text-align: center;
     font-weight: bold;
   }
+
   &__desc {
     text-align: center;
     padding: 0 20px;

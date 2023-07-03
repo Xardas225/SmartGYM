@@ -1,24 +1,26 @@
 <script setup lang="ts">
-const props = defineProps<{
+import { computed, defineEmits, defineProps, toRefs } from 'vue'
+
+const props = defineProps({
   label: { type: String , default: "" },
-  inputType: string | undefined,
-  placeholder: string,
-  input: string,
-  error: boolean,
-  success: boolean
-}>();
+  inputType: { type: String as () => 'text' | 'password' | 'email' | 'number' | undefined, default: 'text' },
+  placeholder: String,
+  input: String,
+  error: Boolean,
+  success: Boolean
+});
 
 const { input } = toRefs(props);
 
-const emit = defineEmits<{
-  (e: "update:input", value: string): void;
-  (e: "changeInput"): void;
-}>();
+const emit = defineEmits(['update:input', 'changeInput']);
 
 const inputComputed = computed({
   get: () => input.value,
-  set: (val) => emit("update:input", val),
+  set: (val) => emit('update:input', val),
 });
+
+const getIcon = () => props.error ? 'alert' : 'check';
+const getIconClass = () => props.error ? 'alert-icon-error' : 'alert-icon-success';
 </script>
 
 <template>
@@ -36,25 +38,30 @@ const inputComputed = computed({
       }"
     />
     <Icon
-      class="position-absolute alert-icon"
       v-if="success || error"
-      :class="`${error ? 'alert-icon-error' : 'alert-icon-success'}`"
-      :name="`mdi:${error ? 'alert' : 'check'}`"
-    ></Icon>
+      class="position-absolute alert-icon"
+      :class="getIconClass"
+      :name="`mdi:${getIcon()}`"
+    />
   </div>
 </template>
 
 <style lang="scss">
+$success-color: #198754;
+$error-color: #ffc107;
+
 .alert-icon {
   font-weight: bold;
   font-size: 20px;
   bottom: 10px;
   right: 10px;
+  
   &-success {
-    color: #198754;
+    color: $success-color;
   }
+  
   &-error {
-    color: #ffc107;
+    color: $error-color;
   }
 }
 </style>

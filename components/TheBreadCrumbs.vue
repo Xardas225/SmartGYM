@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BreadCrumbItem } from "@/interfaces/breadCrumbs";
+import { BreadCrumbItem } from "@/types/interface/breadCrumbs";
 
 const props = defineProps<{
   items: BreadCrumbItem[];
