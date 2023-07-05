@@ -6,6 +6,10 @@ useHead({
   title: "Вход",
 });
 
+definePageMeta({
+  layout: "emptyLayout",
+});
+
 const formData = reactive({
   email: "",
   password: "",

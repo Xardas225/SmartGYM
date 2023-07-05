@@ -3,8 +3,12 @@ import { required, email, minLength } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
 
 useHead({
-  title: 'Регистрация'
-})
+  title: "Регистрация",
+});
+
+definePageMeta({
+  layout: "emptyLayout",
+});
 
 const formData = reactive({
   name: "",
@@ -37,16 +41,13 @@ const signUp = async () => {
     password: formData.password,
   });
 
-  console.log(data);
-
-  navigateTo('/')
+  navigateTo("/");
 };
 </script>
 
 <template>
-
   <div class="card register">
-    <div v-if="user" class="regiter-wrapper">
+    <div v-if="!user" class="regiter-wrapper">
       <div class="card-title register-title">Регистрация</div>
       <div class="card-body register-body">
         <div class="mb-3">
@@ -88,9 +89,7 @@ const signUp = async () => {
         </div>
       </div>
     </div>
-    <div v-else class="register-confirm">
-      Подтвердите плиз
-    </div>
+    <div v-else class="register-confirm">Подтвердите плиз</div>
   </div>
 </template>
 
@@ -127,5 +126,4 @@ const signUp = async () => {
     color: rgba(0, 0, 0, 0.5);
   }
 }
-
 </style>
